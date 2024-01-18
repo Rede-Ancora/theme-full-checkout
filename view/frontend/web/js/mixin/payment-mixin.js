@@ -4,7 +4,9 @@
  * See LICENSE.txt for license details.
  */
 
-define([], function () {
+define([
+	"Magento_Checkout/js/model/step-navigator"
+], function (stepNavigator) {
 	"use strict";
 	return function (targetModule) {
 		return targetModule.extend({
@@ -14,6 +16,9 @@ define([], function () {
 			isVisibleTitleForAddress() {
 				return window.checkoutConfig.move_address_billing;
 			},
+			previousStep() {
+				stepNavigator.navigateTo("shipping");
+			}
 		});
 	};
 });
